@@ -2,10 +2,14 @@ export NVSHMEM_VERSION=3.3.20
 export NVSHMEM_DIR=${HOME}/.local/nvshmem-${NVSHMEM_VERSION}
 export CUDA_MAJOR=12
 export CUDA_ARCH_LIST="90a;100"
+export BUILD_VENV=nvshmem_build
 
 wget https://developer.download.nvidia.com/compute/redist/nvshmem/${NVSHMEM_VERSION}/source/nvshmem_src_cuda12-all-all-${NVSHMEM_VERSION}.tar.gz -O nvshmem_src_cuda${CUDA_MAJOR}.tar.gz && \
     tar -xf nvshmem_src_cuda${CUDA_MAJOR}.tar.gz && \
     cd nvshmem_src && \
+    uv venv ${BUILD_VENV} --python 3.12 && \
+    source ${BUILD_VENV}/bin/activate && \
+    uv pip install ninja && \
     rm -rf build && \
     mkdir build && \
         cd build && \
@@ -24,7 +28,6 @@ wget https://developer.download.nvidia.com/compute/redist/nvshmem/${NVSHMEM_VERS
         -DNVSHMEM_USE_NCCL=0 \
         -DNVSHMEM_BUILD_TESTS=0 \
         -DNVSHMEM_BUILD_EXAMPLES=0 \
-        -DGDRCOPY_HOME=${GDRCOPY_HOME} \
         .. && \
         ninja -j$(nproc) && \
         ninja install && \
