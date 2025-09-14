@@ -1,3 +1,5 @@
+set -o xtrace
+
 export NVSHMEM_VERSION=3.3.20
 export NVSHMEM_DIR=${HOME}/.local/nvshmem-${NVSHMEM_VERSION}
 export CUDA_MAJOR=12
@@ -28,6 +30,7 @@ wget https://developer.download.nvidia.com/compute/redist/nvshmem/${NVSHMEM_VERS
         -DNVSHMEM_USE_NCCL=0 \
         -DNVSHMEM_BUILD_TESTS=0 \
         -DNVSHMEM_BUILD_EXAMPLES=0 \
+        -DGDRCOPY_HOME=${GDRCOPY_HOME} \
         .. && \
         ninja -j$(nproc) && \
         ninja install && \
