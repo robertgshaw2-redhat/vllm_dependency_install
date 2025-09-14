@@ -4,6 +4,7 @@ This repo contains basic scripts for installing various vLLM dependencies in loc
 
 #### Order
 
+- source the envs.sh (or add to your bashrc)
 - install gdrcopy
 - install nvshem
 - build deepep
