@@ -2,7 +2,7 @@ export TORCH_VERION=2.8.0
 export DEEPGEMM_URL="https://github.com/deepseek-ai/DeepGEMM"
 export WHEELS_DIR=$(pwd)/wheels
 export BUILD_VENV=deepgemm_build
-export TORCH_CUDA_ARCH_LIST="10.0a+PTX"
+export TORCH_CUDA_ARCH_LIST="9.0 10.0a+PTX"
 
 git clone "${DEEPGEMM_URL}" deepgemm && \
     cd deepgemm && \
