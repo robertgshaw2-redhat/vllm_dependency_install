@@ -2,7 +2,7 @@ export TORCH_VERION=2.8.0
 export DEEPEP_URL="https://github.com/deepseek-ai/DeepEP"
 export WHEELS_DIR=$(pwd)/wheels
 export BUILD_VENV=deepep_build
-export TORCH_CUDA_ARCH_LIST="10.0a+PTX"
+export TORCH_CUDA_ARCH_LIST="9.0 10.0a+PTX"
 
 git clone "${DEEPEP_URL}" deepep && \
     cd deepep && \
